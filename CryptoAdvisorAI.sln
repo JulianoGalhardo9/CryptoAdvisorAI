@@ -3,10 +3,42 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1706.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoAdvisorAI.Domain", "CryptoAdvisorAI.Domain\CryptoAdvisorAI.Domain.csproj", "{0C80F220-4C3E-4D60-BDDA-8264F69BC67F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoAdvisorAI.Application", "CryptoAdvisorAI.Application\CryptoAdvisorAI.Application.csproj", "{248D16A7-777D-42BB-B70F-CCB1F26EC9BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoAdvisorAI.Infrastructure", "CryptoAdvisorAI.Infrastructure\CryptoAdvisorAI.Infrastructure.csproj", "{941076C2-AE1E-492B-AD95-6E9DCD565406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoAdvisorAI.API", "CryptoAdvisorAI.API\CryptoAdvisorAI.API.csproj", "{FEE29229-0E2C-4D9A-A776-CF7F8B69B2EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoAdvisorAI.Tests", "CryptoAdvisorAI.Tests\CryptoAdvisorAI.Tests.csproj", "{3240ACE5-5F47-4AFF-8C1F-DBAF9844739A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C80F220-4C3E-4D60-BDDA-8264F69BC67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C80F220-4C3E-4D60-BDDA-8264F69BC67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C80F220-4C3E-4D60-BDDA-8264F69BC67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C80F220-4C3E-4D60-BDDA-8264F69BC67F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{248D16A7-777D-42BB-B70F-CCB1F26EC9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{248D16A7-777D-42BB-B70F-CCB1F26EC9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{248D16A7-777D-42BB-B70F-CCB1F26EC9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{248D16A7-777D-42BB-B70F-CCB1F26EC9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941076C2-AE1E-492B-AD95-6E9DCD565406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941076C2-AE1E-492B-AD95-6E9DCD565406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941076C2-AE1E-492B-AD95-6E9DCD565406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941076C2-AE1E-492B-AD95-6E9DCD565406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEE29229-0E2C-4D9A-A776-CF7F8B69B2EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE29229-0E2C-4D9A-A776-CF7F8B69B2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE29229-0E2C-4D9A-A776-CF7F8B69B2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE29229-0E2C-4D9A-A776-CF7F8B69B2EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3240ACE5-5F47-4AFF-8C1F-DBAF9844739A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3240ACE5-5F47-4AFF-8C1F-DBAF9844739A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3240ACE5-5F47-4AFF-8C1F-DBAF9844739A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3240ACE5-5F47-4AFF-8C1F-DBAF9844739A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

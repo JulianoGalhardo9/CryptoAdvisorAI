@@ -9,7 +9,7 @@ namespace CryptoAdvisorAI.Infrastructure.Data
         {
         }
 
-        // Aqui dizemos: "Crie uma tabela de Transações baseada na minha classe Transaction"
+        //Crie uma tabela de Transações baseada na minha classe Transaction
         public DbSet<Transaction> Transactions { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CryptoAdvisorAI.Infrastructure.Extensions;
+using CryptoAdvisorAI.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Registra a camada de aplicação
+builder.Services.AddApplication();
 
 // REGISTRA INFRASTRUCTURE (DbContext)
 builder.Services.AddInfrastructure(builder.Configuration);

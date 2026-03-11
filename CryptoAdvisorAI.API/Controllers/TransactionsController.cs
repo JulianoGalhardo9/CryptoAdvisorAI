@@ -1,4 +1,5 @@
 ﻿using CryptoAdvisorAI.Application.DTOs;
+using CryptoAdvisorAI.Application.Interfaces;
 using CryptoAdvisorAI.Domain.Entities;
 using CryptoAdvisorAI.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -9,30 +10,24 @@ namespace CryptoAdvisorAI.API.Controllers
     [Route("api/[controller]")] // O endereço será: api/transactions
     public class TransactionsController : ControllerBase
     {
+        private readonly ICreateTransactionUseCase _createTransactionUseCase;
         private readonly ITransactionRepository _repository;
 
         // Injeção de Dependência: Pedimos o Repositório para o .NET
-        public TransactionsController(ITransactionRepository repository)
+        public TransactionsController(
+            ICreateTransactionUseCase createTransactionUseCase,
+            ITransactionRepository repository)
         {
+            _createTransactionUseCase = createTransactionUseCase;
             _repository = repository;
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateTransactionRequest request)
         {
-            //Transformamos o DTO na Entidade (regras de negócio)
-            var transaction = new Transaction(
-                request.Symbol,
-                request.Quantity,
-                request.PriceAtPurchase,
-                request.PurchaseDate
-            );
-
-            // repositório salvar no Postgres
-            await _repository.AddAsync(transaction);
-
-            //Respondemos "200 OK" com a transação criada
-            return Ok(transaction);
+            // A Controller agora só "manda" o UseCase executar
+            var result = await _createTransactionUseCase.ExecuteAsync(request);
+            return Ok(result);
         }
 
         [HttpGet]

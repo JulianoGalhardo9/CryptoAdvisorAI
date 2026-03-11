@@ -403,3 +403,15 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# =========================
+# ASP.NET Core Secrets
+# =========================
+
+# Configuration files with sensitive data
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# User secrets
+secrets.json

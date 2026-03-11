@@ -10,6 +10,7 @@ namespace CryptoAdvisorAI.Application.Extensions
         {
             services.AddScoped<ICreateTransactionUseCase, CreateTransactionUseCase>();
             services.AddScoped<IGetPortfolioUseCase, GetPortfolioUseCase>();
+            services.AddScoped<GenerateAdviceUseCase>();
 
             return services;
         }

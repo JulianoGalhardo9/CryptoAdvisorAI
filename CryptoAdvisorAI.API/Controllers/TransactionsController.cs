@@ -1,5 +1,6 @@
 ﻿using CryptoAdvisorAI.Application.DTOs;
 using CryptoAdvisorAI.Application.Interfaces;
+using CryptoAdvisorAI.Application.UseCases;
 using CryptoAdvisorAI.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +45,13 @@ namespace CryptoAdvisorAI.API.Controllers
         {
             var result = await _getPortfolioUseCase.ExecuteAsync();
             return Ok(result);
+        }
+
+        [HttpGet("advice")]
+        public async Task<IActionResult> GetAdvice([FromServices] GenerateAdviceUseCase useCase)
+        {
+            var advice = await useCase.ExecuteAsync();
+            return Ok(new { Advice = advice });
         }
     }
 }

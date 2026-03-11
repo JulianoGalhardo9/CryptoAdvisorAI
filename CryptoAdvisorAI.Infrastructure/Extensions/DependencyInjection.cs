@@ -1,5 +1,7 @@
-﻿using CryptoAdvisorAI.Domain.Interfaces;
+﻿using CryptoAdvisorAI.Application.Interfaces;
+using CryptoAdvisorAI.Domain.Interfaces;
 using CryptoAdvisorAI.Infrastructure.Data;
+using CryptoAdvisorAI.Infrastructure.ExternalServices;
 using CryptoAdvisorAI.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,7 @@ namespace CryptoAdvisorAI.Infrastructure.Extensions
 
             // "Sempre que alguém pedir a interface ITransactionRepository, entregue a classe TransactionRepository"
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<ICryptoAdvisorService, CryptoAdvisorService>();
 
             return services;
         }

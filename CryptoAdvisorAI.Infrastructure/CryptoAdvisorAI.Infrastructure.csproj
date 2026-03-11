@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CryptoAdvisorAI.Domain\CryptoAdvisorAI.Domain.csproj" />
+    <ProjectReference Include="..\CryptoAdvisorAI.Application\CryptoAdvisorAI.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -22,11 +23,13 @@
     <None Remove="Extensions\" />
     <None Remove="Persistence\" />
     <None Remove="Repositories\" />
+    <None Remove="ExternalServices\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Extensions\" />
     <Folder Include="Persistence\" />
     <Folder Include="Repositories\" />
+    <Folder Include="ExternalServices\" />
   </ItemGroup>
 </Project>

@@ -24,7 +24,9 @@ namespace CryptoAdvisorAI.Application.UseCases
                 request.Symbol,
                 request.Quantity,
                 request.PriceAtPurchase,
-                request.PurchaseDate
+                request.PurchaseDate,
+                request.Type
+
             );
 
             await _repository.AddAsync(transaction);

@@ -1,11 +1,15 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using CryptoAdvisorAI.Infrastructure.Extensions;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// REGISTRA INFRASTRUCTURE (DbContext)
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
@@ -23,4 +27,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-

@@ -20,9 +20,11 @@
   <ItemGroup>
     <None Remove="Data\" />
     <None Remove="Extensions\" />
+    <None Remove="Persistence\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Persistence\" />
   </ItemGroup>
 </Project>

@@ -9,4 +9,10 @@
   <ItemGroup>
     <ProjectReference Include="..\CryptoAdvisorAI.Domain\CryptoAdvisorAI.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="DTOs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
 </Project>

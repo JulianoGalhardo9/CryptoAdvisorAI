@@ -9,6 +9,7 @@ namespace CryptoAdvisorAI.Application.Extensions
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<ICreateTransactionUseCase, CreateTransactionUseCase>();
+            services.AddScoped<IGetPortfolioUseCase, GetPortfolioUseCase>();
 
             return services;
         }

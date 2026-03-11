@@ -1,6 +1,5 @@
 ﻿using CryptoAdvisorAI.Application.DTOs;
 using CryptoAdvisorAI.Application.Interfaces;
-using CryptoAdvisorAI.Domain.Entities;
 using CryptoAdvisorAI.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,14 +11,17 @@ namespace CryptoAdvisorAI.API.Controllers
     {
         private readonly ICreateTransactionUseCase _createTransactionUseCase;
         private readonly ITransactionRepository _repository;
+        private readonly IGetPortfolioUseCase _getPortfolioUseCase;
 
         // Injeção de Dependência: Pedimos o Repositório para o .NET
         public TransactionsController(
             ICreateTransactionUseCase createTransactionUseCase,
-            ITransactionRepository repository)
+            ITransactionRepository repository,
+            IGetPortfolioUseCase getPortfolioUseCase)
         {
             _createTransactionUseCase = createTransactionUseCase;
             _repository = repository;
+            _getPortfolioUseCase = getPortfolioUseCase;
         }
 
         [HttpPost]
@@ -35,6 +37,13 @@ namespace CryptoAdvisorAI.API.Controllers
         {
             var transactions = await _repository.GetAllAsync();
             return Ok(transactions);
+        }
+
+        [HttpGet("portfolio")]
+        public async Task<IActionResult> GetPortfolio()
+        {
+            var result = await _getPortfolioUseCase.ExecuteAsync();
+            return Ok(result);
         }
     }
 }

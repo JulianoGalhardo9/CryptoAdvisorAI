@@ -1,5 +1,6 @@
 ﻿using CryptoAdvisorAI.Application.DTOs;
 using CryptoAdvisorAI.Application.Interfaces;
+using CryptoAdvisorAI.Domain.Entities;
 using CryptoAdvisorAI.Domain.Interfaces;
 
 namespace CryptoAdvisorAI.Application.UseCases
@@ -15,32 +16,24 @@ namespace CryptoAdvisorAI.Application.UseCases
 
         public async Task<PortfolioResponse> ExecuteAsync()
         {
-            // Busca todas as transações no banco
             var transactions = await _repository.GetAllAsync();
 
-            // agrupa por símbolo (BTC, ETH...) usando LINQ
-            // "GroupBy" junta tudo que tem o mesmo nome
+            // 1. Calculamos o Saldo em Dinheiro (Cash)
+            var deposits = transactions.Where(t => t.Type == TransactionType.Deposit).Sum(t => t.TotalCost);
+            var buys = transactions.Where(t => t.Type == TransactionType.Buy).Sum(t => t.TotalCost);
+            var cashBalance = deposits - buys;
+
+            // 2. Calculamos as Criptos (Apenas o que é Buy)
             var portfolioItems = transactions
+                .Where(t => t.Type == TransactionType.Buy)
                 .GroupBy(t => t.Symbol)
-                .Select(group =>
-                {
-                    var totalQuantity = group.Sum(t => t.Quantity);
-                    var totalInvested = group.Sum(t => t.TotalCost);
-
-                    // Cálculo do Preço Médio: Total gasto / Total comprado
-                    var averagePrice = totalQuantity > 0 ? totalInvested / totalQuantity : 0;
-
-                    return new WalletItemDto(
-                        group.Key,
-                        totalQuantity,
-                        averagePrice,
-                        totalInvested
-                    );
+                .Select(group => {
+                    var totalQty = group.Sum(t => t.Quantity);
+                    var totalCost = group.Sum(t => t.TotalCost);
+                    return new WalletItemDto(group.Key, totalQty, totalCost / totalQty, totalCost);
                 }).ToList();
 
-            var grandTotal = portfolioItems.Sum(x => x.TotalInvested);
-
-            return new PortfolioResponse(portfolioItems, grandTotal);
+            return new PortfolioResponse(portfolioItems, cashBalance, cashBalance + portfolioItems.Sum(x => x.TotalInvested));
         }
     }
 }

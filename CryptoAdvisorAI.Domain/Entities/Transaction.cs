@@ -7,10 +7,11 @@
         public decimal Quantity { get; private set; }
         public decimal PriceAtPurchase { get; private set; }
         public DateTime PurchaseDate { get; private set; }
+        public TransactionType Type { get; private set; }
 
         public decimal TotalCost => Quantity * PriceAtPurchase;
 
-        public Transaction(string symbol, decimal quantity, decimal priceAtPurchase, DateTime purchaseDate)
+        public Transaction(string symbol, decimal quantity, decimal priceAtPurchase, DateTime purchaseDate, TransactionType type)
         {
             if (string.IsNullOrWhiteSpace(symbol))
                 throw new ArgumentException("O símbolo da moeda é obrigatório.");
@@ -26,6 +27,7 @@
             Quantity = quantity;
             PriceAtPurchase = priceAtPurchase;
             PurchaseDate = purchaseDate;
+            Type = type;
         }
     }
 }

@@ -11,7 +11,8 @@
     // O resumo geral da carteira
     public record PortfolioResponse(
         List<WalletItemDto> Items,
-        decimal GrandTotalInvested
+        decimal CashBalance,
+        decimal TotalEquity
     );
 }
 

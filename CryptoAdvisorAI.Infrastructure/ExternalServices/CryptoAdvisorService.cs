@@ -1,22 +1,31 @@
 ﻿using CryptoAdvisorAI.Application.DTOs;
 using CryptoAdvisorAI.Application.Interfaces;
 
-namespace CryptoAdvisorAI.Infrastructure.ExternalServices
+namespace CryptoAdvisorAI.Infrastructure.ExternalServices;
+
+public class CryptoAdvisorService : ICryptoAdvisorService
 {
-    public class CryptoAdvisorService : ICryptoAdvisorService
+    public async Task<string> GetAdviceAsync(PortfolioResponse portfolio)
     {
-        public async Task<string> GetAdviceAsync(PortfolioResponse portfolio)
+        // Simulamos um pequeno delay para parecer processamento de IA
+        await Task.Delay(500);
+
+        // Lógica de Especialista (Heurística)
+        if (portfolio.CashBalance > (portfolio.TotalEquity * 0.5m) && portfolio.CashBalance > 0)
         {
-            // Simulando o tempo de resposta de uma IA
-            await Task.Delay(1000);
-
-            if (portfolio.CashBalance > 1000)
-            {
-                return "Notei que você tem um saldo alto parado. O mercado de BTC está em um bom ponto de entrada, que tal diversificar 10% desse valor?";
-            }
-
-            return "Seu portfólio está equilibrado. Mantenha sua estratégia de longo prazo.";
+            return "Análise: Você tem muito saldo em caixa (Fiat). O mercado sugere que este é um bom momento para diversificar em ativos sólidos como BTC ou ETH para proteger seu poder de compra.";
         }
+
+        if (portfolio.Items.Count == 0)
+        {
+            return "Análise: Sua carteira está vazia. Comece depositando um saldo virtual e realize sua primeira compra simulada para entender o preço médio.";
+        }
+
+        if (portfolio.Items.Any(i => i.Symbol == "BTC"))
+        {
+            return "Análise: Você possui Bitcoin na carteira. Estratégia recomendada: HODL. Mantenha seus ativos e acompanhe o gráfico de 4 horas para identificar novas oportunidades de aporte.";
+        }
+
+        return "Análise: Portfólio equilibrado. Recomendo manter a disciplina nos aportes mensais (DCA) para otimizar seu preço médio a longo prazo.";
     }
 }
-
